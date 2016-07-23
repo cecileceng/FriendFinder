@@ -19,16 +19,16 @@ var friends = [
 		"name":"Cow",
 		"photo":"http://survivelaterpreptoday.info/wp-content/uploads/2016/04/Chupacabra.jpg",
 		"scores":[
+			3,
+			1,
+			2,
+			5,
+			2,
 			4,
-			5,
-			5,
-			3,
-			2,
-			3,
-			1,
 			1,
 			2,
-			2
+			4,
+			4
 			]
 	},
 	{

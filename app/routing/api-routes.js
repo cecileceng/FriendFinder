@@ -8,7 +8,8 @@ module.exports = function(app) {
 		res.json(friendData);
 	})
 	app.post('api/friends', function(req,res){
-		//LOGIC FOR FRIENDS GOES HERE?
+		//add data from request to friendData array
+		//calculate animal here and save in friendData
 	})
 	app.post('/api/clear', function(req, res){
 		friendData = [];
