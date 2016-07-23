@@ -1,4 +1,4 @@
-var friends = [
+var friendData = [
 	{
 		"name":"Chupacabra",
 		"photo":"http://survivelaterpreptoday.info/wp-content/uploads/2016/04/Chupacabra.jpg",
