@@ -79,7 +79,9 @@ var friends = [
 			2
 			]
 	}
-]
+];
+
+module.exports = friendData;
 
 /* KEY FOR ME:
 Strong

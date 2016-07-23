@@ -66,13 +66,32 @@
 		</div>
 	<footer class="footer">
 		<div class="container">
-			<p>The obligatory disclaimer -- this is a homework assignment. The developer for this is not a spirit guru. No animals were harmed in the making of this website. (No guarantees if they were preharmed unfortunately; I just found pictures of animals on the internet.)
+			<p>The obligatory disclaimer -- this is a homework assignment. The developer for this is not a spirit guru. No animals were harmed in the making of this website. (No guarantees if they were preharmed unfortunately; I just found pictures of animals on the internet.) Also the pictures aren't mine.
 			<br><a href="https://github.com/cecileceng/FriendFinder">See the code <u>here</u> on my GitHub Repo</a></p>
 		</div>
 	</footer>
 	</div>
-</body>
 
+	<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div id="spirAniPopup" class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Spirit Animal</h3>
+      </div>
+      <div class="modal-body">
+        <h3 id="spirAniName"></h3>
+        <img id="spirAniPic" src="">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
 
 <!-- HANDLES HOW FORM DATA IS LOADED FROM OUR SERVER -->
 
@@ -80,71 +99,20 @@
 	$(".submit").on("click", function(){
 		// Here we grab the form elements
 		var surveyScore = {
-			customerName: $('#reserve_name').val().trim(),
-			phoneNumber: $('#reserve_phone').val().trim(),
-			customerEmail: $('#reserve_email').val().trim(),
-			customerID: $('#reserve_uniqueID').val().trim()
+			name: $('#name').val().trim(),
+			photo: $('#photo').val().trim(),
+			scores: [$('#strong').val().trim(),$('#scary').val().trim(),$('#deadly').val().trim(),$('#real').val().trim(),$('#smart').val().trim(),$('#derpy').val().trim(),$('#cynical').val().trim(),$('#cute').val().trim(),$('#funny').val().trim(),$('#stinky').val().trim()]
 		};
-		console.log(surveyScore);
 		var currentURL = window.location.origin;
-
-	    $.post(currentURL + "/api/friends", surveyScore,
-	    function(data){
-
-	    	// If a table is available... tell user they are booked.
-	    	if(data == true){
-	    		alert("Yay! You are officially booked!")
-	    	}
-
-	    	// If a table is available... tell user they on the waiting list.
-	    	if(data == false){
-	    		alert("Sorry you are on the wait list")
-	    	}
-
-	    	// Clear the form when submitting
-    		$('#reserve_name').val("");
-			$('#reserve_phone').val("");
-			$('#reserve_email').val("");
-			$('#reserve_uniqueID').val("");
-
-	    });
-
-return false;
-
-});
-
-	function runSurveyQuery(){
-		var currentURL = window.location.origin;
-		$.ajax({url: currentURL + "/api/friends", method: "GET"}) 
-			.done(function(friendData) {
-
-				// Here we are logging the URL so we have access to it for troubleshooting
-				console.log("------------------------------------");
-				console.log("URL: " + currentURL + "/api/friends");
-				console.log("------------------------------------");
-
-				// LOG DATA TO CONSOLE AS OBJECT
-				console.log(friendData);
-				console.log("------------------------------------")
-
-				// DO SOMETHING ELSE HERE
-			});
-	}
-
-// RESET DATA IN TABLE
-	function clearTable(){
-		var currentURL = window.location.origin;
-		$.ajax({url: currentURL + "/api/clear", method: "POST"}) 
-	}
-	$("#clear").on('click', function(){
-		alert("Clearing...");
-		clearTable();
-		// REFRESH
-		location.reload();
-	})
-
-// RUN
-runSurveyQuery(); //Maybe?
+		$.post(currentURL + '/api/friends', userInput, function(data) {
+			$("#spirAniName").text(data.name);
+			$("#spirAniPic").attr("src", data.photo);
+			$("#spirAniPopup").modal("show");
+		});
+		return false;
+	});
 
 </script>
+
+</body>
 </html>
