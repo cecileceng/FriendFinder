@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/cecileceng/FriendFinder/issues"
   },
-  "homepage": "https://github.com/cecileceng/FriendFinder#readme"
+  "homepage": "https://github.com/cecileceng/FriendFinder#readme",
+  "engines": {
+    "node": "6.2.2"
+  }
 }
