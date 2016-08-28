@@ -9,11 +9,12 @@ var API = function(app) {
 		res.json(friendData);
 	})
 };
-/*
+
 	app.post('api/friends', function(req,res){
-		//add data from request to friendData array
-		//calculate animal here and save in friendData
+		console.log(req.body);
 	})
+
+/*
 	app.post('/api/clear', function(req, res){
 		friendData = [];
 		console.log(friendData);

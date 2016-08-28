@@ -104,9 +104,9 @@
 			scores: [$('#strong').val().trim(),$('#scary').val().trim(),$('#deadly').val().trim(),$('#real').val().trim(),$('#smart').val().trim(),$('#derpy').val().trim(),$('#cynical').val().trim(),$('#cute').val().trim(),$('#funny').val().trim(),$('#stinky').val().trim()]
 		};
 		var currentURL = window.location.origin;
-		$.post(currentURL + '/api/friends', userInput, function(data) {
-			$("#spirAniName").text(data.name);
-			$("#spirAniPic").attr("src", data.photo);
+		$.post(currentURL + '/api/friends', surveyScore, function(data) {
+			$("#spirAniName").text(friendData.name);
+			$("#spirAniPic").attr("src", friendData.photo);
 			$("#spirAniPopup").modal("show");
 		});
 		return false;
